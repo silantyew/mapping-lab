@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -61,13 +61,7 @@ namespace IntegrationApp
 
         static string MapData(string[] data, Dictionary<string, string> mapping)
         {
-            var mappedData = new List<string>();
-            foreach (var key in mapping.Keys)
-            {
-                var value = data[Array.IndexOf(data, key)];
-                mappedData.Add(value); // Может потребоваться более сложная логика маппинга
-            }
-            return string.Join(",", mappedData);
+            return string.Join(",", mapping.Keys.Select(key => data[Array.IndexOf(data, key)]));
         }
     }
 }
